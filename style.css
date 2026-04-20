@@ -557,3 +557,36 @@ footer {
     margin-bottom: 0.5rem;
 }
 
+
+/* --- UX & Accessibility Fixes --- */
+a {
+    transition: color 0.3s ease, background 0.3s ease, transform 0.2s ease;
+}
+
+a:hover {
+    color: var(--primary) !important;
+    transform: translateY(-2px);
+}
+
+a:active {
+    transform: translateY(0);
+}
+
+.cta-primary:hover {
+    background: #00FF66; /* Brighter green for hover contrast */
+    box-shadow: 0 0 30px rgba(0, 255, 102, 0.4);
+    transform: scale(1.05);
+}
+
+.cta-mini:hover {
+    background: #00FF66;
+    color: #000 !important;
+    transform: scale(1.05);
+}
+
+/* Ensure focus states for accessibility */
+a:focus, button:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 4px;
+}
+
