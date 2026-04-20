@@ -47,21 +47,22 @@ function initThreeJS() {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
     // Neural Network Geometry
-    const particlesCount = window.innerWidth > 768 ? 150 : 80;
+    const isMobile = window.innerWidth <= 768;
+    const particlesCount = isMobile ? 100 : 150;
     const posArray = new Float32Array(particlesCount * 3);
     
     for(let i = 0; i < particlesCount * 3; i++) {
-        posArray[i] = (Math.random() - 0.5) * 10;
+        posArray[i] = (Math.random() - 0.5) * (isMobile ? 8 : 10);
     }
 
     const particlesGeometry = new THREE.BufferGeometry();
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
 
     const particlesMaterial = new THREE.PointsMaterial({
-        size: 0.02,
+        size: isMobile ? 0.05 : 0.02, // Larger particles on mobile
         color: '#00C853',
         transparent: true,
-        opacity: 0.8
+        opacity: isMobile ? 1.0 : 0.8 // Full opacity on mobile
     });
 
     const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);

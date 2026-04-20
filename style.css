@@ -621,11 +621,16 @@ a:focus, button:focus {
     }
     
     .hero h1 {
-        font-size: 2.5rem;
-        line-height: 1.2;
+        font-size: 2.8rem;
+        line-height: 1.1;
     }
     
     .hero::before {
-        opacity: 0.2; /* Lighter image on mobile to focus on 3D */
+        opacity: 0.6; /* Increased visibility of the hero image */
+        filter: grayscale(100%) contrast(120%);
+    }
+
+    .hero::after {
+        background: radial-gradient(circle at center, transparent 0%, rgba(10, 10, 10, 0.6) 100%);
     }
 }
